@@ -1,4 +1,5 @@
 ﻿using BrowserSpider.Models;
+using BrowserSpider.Models.Browser;
 using System;
 using System.Windows.Forms;
 
@@ -14,16 +15,21 @@ namespace BrowserSpider
         private void browserSpiderFrm_Load(object sender, EventArgs e)
         {
             //Get Firefox Browser History
-            FirefoxBrowserHistory firefox = new FirefoxBrowserHistory();
-            fireFoxDataGrid.DataSource = firefox.GetDataTable();
+            Browser firefox = new FirefoxBrowser();
+            fireFoxDataGrid.DataSource = firefox.GetBrowserHistoryDataTable();
 
             //Get Chrome Browser History
-            ChromeBrowserHistory chrome = new ChromeBrowserHistory();
-            chromeDataGrid.DataSource = chrome.GetDataTable();
+            Browser chrome = new ChromeBrowser();
+            chromeDataGrid.DataSource = chrome.GetBrowserHistoryDataTable();
 
             //get Opera Browser History
-            OperaBrowserHistory opera = new OperaBrowserHistory();
-            operaDataGrid.DataSource = opera.GetDataTable();
+            Browser opera = new OperaBrowser();
+            operaDataGrid.DataSource = opera.GetBrowserHistoryDataTable();
+        }
+
+        private void chromeDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -2,16 +2,16 @@
 using System.IO;
 using System.Linq;
 
-namespace BrowserSpider.Models
+namespace BrowserSpider.Models.Browser
 {
-    class FirefoxBrowserHistory : BrowserHistory
+    class BrowserPath
     {
-        public FirefoxBrowserHistory()
-        {
-            path = ReadFirefoxProfile() + "\\places.sqlite";
-            query = @"SELECT url as URL, title as Title, datetime(visit_date / 1000000,'unixepoch', 'localtime' ) AS DateTime FROM moz_historyvisits, moz_places WHERE moz_historyvisits.place_id=moz_places.id ORDER BY DateTime DESC limit 50;";
-            name = "FireFox";
-        }
+        private BrowserPath() { }
+
+        public static readonly String CHROME  = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Google\Chrome\User Data\Default\";
+        public static readonly String FIREFOX = ReadFirefoxProfile() + "\\";
+        public static readonly String OPERA = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Opera Software\Opera Stable\";
+
         private static string ReadFirefoxProfile()
         {
             string mozillaDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Mozilla");
@@ -38,5 +38,6 @@ namespace BrowserSpider.Models
             }
             return "";
         }
+
     }
 }

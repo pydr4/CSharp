@@ -69,10 +69,16 @@
     <Compile Include="BrowserSpider.Designer.cs">
       <DependentUpon>BrowserSpider.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\BrowserHistory.cs" />
-    <Compile Include="Models\ChromeBrowserHistory.cs" />
-    <Compile Include="Models\FirefoxBrowserHistory.cs" />
-    <Compile Include="Models\OperaBrowserHistory.cs" />
+    <Compile Include="Models\BrowserTypes\Chrome\ChromeBrowser.cs" />
+    <Compile Include="Models\BrowserTypes\Firefox\FirefoxBrowser.cs" />
+    <Compile Include="Models\BrowserTypes\Opera\OperaBrowser.cs" />
+    <Compile Include="Models\Browser\Browser.cs" />
+    <Compile Include="Models\Browser\BrowserHistory.cs" />
+    <Compile Include="Models\BrowserTypes\Chrome\ChromeBrowserHistory.cs" />
+    <Compile Include="Models\BrowserTypes\Firefox\FirefoxBrowserHistory.cs" />
+    <Compile Include="Models\BrowserTypes\Opera\OperaBrowserHistory.cs" />
+    <Compile Include="Models\Browser\BrowserPath.cs" />
+    <Compile Include="Models\Browser\BrowserSavedSignOns.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="BrowserSpider.resx">

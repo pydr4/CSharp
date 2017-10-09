@@ -3,18 +3,17 @@ using System.Data;
 using System.Data.SQLite;
 using System.Windows.Forms;
 
-namespace BrowserSpider.Models
+namespace BrowserSpider.Models.Browser.History
 {
     class BrowserHistory
     {
         protected String path { get; set; }
         protected String query { get; set; }
-        protected String name { get; set; }
+        protected String file_name { get; set; }
 
-        public DataTable GetDataTable()
+        public DataTable GetDataTable() 
         {
-
-            using (SQLiteConnection cn = new SQLiteConnection("Data Source=" + path + ";Version=3;New=False;Compress=True;"))
+            using (SQLiteConnection cn = new SQLiteConnection("Data Source=" + path + file_name + ";Version=3;New=False;Compress=True;"))
             {
                 try
                 {
@@ -28,12 +27,9 @@ namespace BrowserSpider.Models
                 }
                 catch
                 {
-                    MessageBox.Show("Failed to retrieve " + name + " browser history. Please ensure history file exists.");
+                    throw new Exception("History File Does Not Exist");
                 }
             }
-
-            return null;
-
         }
     }
 }
